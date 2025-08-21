@@ -1,0 +1,185 @@
+/* MiniMage Game Styles */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow: hidden;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+  overflow: hidden;
+}
+
+/* Spell Cards Styling */
+.spell-cards-container {
+  color: #fff;
+}
+
+.spell-cards-container h3 {
+  color: #44aaff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px #44aaff;
+}
+
+.cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.spell-card {
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.spell-card:not(.on-cooldown):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(68, 170, 255, 0.3);
+}
+
+.spell-card:not(.on-cooldown):hover .card-hover-effect {
+  opacity: 1 !important;
+}
+
+.spell-card:active {
+  transform: translateY(0);
+}
+
+/* Mini-Game Styling */
+.mini-game-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.mini-game-modal {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid #44aaff;
+  border-radius: 12px;
+  padding: 30px;
+  min-width: 400px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 30px rgba(68, 170, 255, 0.5);
+}
+
+.mini-game-content {
+  color: #fff;
+}
+
+.mini-game-content h3 {
+  color: #44aaff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px #44aaff;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-button:hover {
+  color: #ff4444;
+}
+
+.target-button {
+  transition: all 0.1s ease;
+}
+
+.target-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.6);
+}
+
+.waiting-indicator {
+  font-size: 18px;
+  color: #ffaa44;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Canvas styling */
+canvas {
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .App > div:first-of-type {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .spell-cards-container {
+    max-width: none;
+    width: 100%;
+  }
+  
+  .cards-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 800px) {
+  .App {
+    padding: 10px;
+  }
+  
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .mini-game-modal {
+    min-width: 300px;
+    max-width: 90vw;
+    padding: 20px;
+  }
+}
+
+@keyframes lightning-flash {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scale(1.1);
+  }
+}
